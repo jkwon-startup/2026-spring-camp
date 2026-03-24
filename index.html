@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Spring Camp — 여행가J × 더배러 | 지식관리 스프링캠프</title>
+<meta name="description" content="AI 시대 지식관리 워크샵! 하루 만에 나만의 시스템과 AI 워크플로우 완성. 얼리버드 최대 75% 할인 진행 중.">
+<meta property="og:title" content="2026 Spring Camp — 여행가J × 더배러 | 지식관리 스프링캠프">
+<meta property="og:description" content="AI 시대, 살아남는 사람은 기록이 아니라 '맥락'을 설계합니다. 4월 18일, 하루 만에 나만의 지식관리 시스템을 완성하세요.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --dark: #111111;
+  --dark-card: #161616;
+  --dark-border: #2a2a2a;
+  --pink: #F8A4C8;
+  --pink-glow: rgba(248, 164, 200, 0.15);
+  --green: #7ED4A6;
+  --green-glow: rgba(126, 212, 166, 0.15);
+  --lavender: #B8A9E8;
+  --lavender-glow: rgba(184, 169, 232, 0.15);
+  --golden: #FFD4A8;
+  --text: #E8E4DF;
+  --text-dim: #8A8580;
+  --text-muted: #5A5550;
+  --serif: 'Noto Serif KR', serif;
+  --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ═══════ PETAL ANIMATION ═══════ */
+.petals-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+  width: 12px;
+  height: 16px;
+  background: var(--pink);
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  filter: blur(0.5px);
+  animation: petalFall linear infinite;
+}
+
+.petal:nth-child(odd) {
+  background: rgba(248, 164, 200, 0.6);
+  width: 10px; height: 13px;
+}
+
+.petal:nth-child(3n) {
+  background: rgba(184, 169, 232, 0.4);
+  width: 8px; height: 11px;
+}
+
+@keyframes petalFall {
+  0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(105vh) rotate(720deg) translateX(80px); opacity: 0; }
+}
+
+/* ═══════ REVEAL ANIMATION ═══════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════ LAYOUT ═══════ */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════ STICKY CTA BAR ═══════ */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--dark-border);
+  padding: 12px 24px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticky-cta.show { transform: translateY(0); }
+
+.sticky-cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticky-cta .btn { font-size: 0.85rem; padding: 10px 20px; flex: 1; max-width: 240px; }
+
+/* ═══════ BUTTONS ═══════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 60px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink), #e88db8);
+  color: var(--black);
+  box-shadow: 0 4px 30px rgba(248, 164, 200, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(248, 164, 200, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--dark-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--lavender);
+  color: var(--lavender);
+  transform: translateY(-2px);
+}
+
+.btn-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ═══════ HERO ═══════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 0 80px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(248, 164, 200, 0.1) 0%, rgba(184, 169, 232, 0.05) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--dark-border);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 36px;
+  letter-spacing: 0.05em;
+}
+
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* 이벤트 타이틀: 2026 Spring Camp */
+.hero-event-title {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* 콜라보 라인: 여행가J x 더배러 */
+.hero-collab {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-collab .x-mark {
+  -webkit-text-fill-color: var(--text-muted);
+  font-weight: 300;
+  font-size: 0.7em;
+  margin: 0 4px;
+}
+
+/* 메인 카피 */
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--pink), var(--lavender));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.hero-date {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--golden);
+  margin-bottom: 36px;
+}
+
+.hero .btn-group { justify-content: center; }
+
+/* ═══════ SECTION DIVIDER ═══════ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dark-border), transparent);
+  margin: 0;
+}
+
+.divider-floral {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  letter-spacing: 1em;
+  user-select: none;
+}
+
+/* ═══════ VALUE PROPS ═══════ */
+.value-section { padding: 80px 0; }
+
+.value-header {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.value-header .fire { color: var(--golden); }
+
+.value-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.value-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  transition: border-color 0.3s;
+}
+
+.value-list li:hover { border-color: var(--pink); }
+
+.value-list .icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.value-quote {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--pink);
+  font-style: italic;
+  padding: 20px 24px;
+  border: 1px solid rgba(248, 164, 200, 0.2);
+  border-radius: 12px;
+  background: rgba(248, 164, 200, 0.04);
+  margin-top: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════ PRICING ═══════ */
+.pricing-section { padding: 80px 0; }
+
+.pricing-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pricing-card {
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.pricing-card:hover { transform: translateY(-4px); }
+
+.pricing-card.featured {
+  border-color: var(--pink);
+  background: linear-gradient(160deg, rgba(248, 164, 200, 0.08), var(--dark-card));
+}
+
+.pricing-card.featured::before {
+  content: attr(data-badge);
+  position: absolute;
+  top: 0; right: 0;
+  background: linear-gradient(135deg, var(--pink), #e88db8);
+  color: var(--black);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 0 16px 0 12px;
+}
+
+.pricing-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.pricing-period {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.pricing-row:last-child { border-bottom: none; }
+
+.pricing-type { font-size: 0.9rem; color: var(--text-dim); }
+
+.pricing-amount {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.pricing-card.featured .pricing-amount { color: var(--pink); }
+
+.pricing-urgency {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--golden);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 212, 168, 0.3);
+  background: rgba(255, 212, 168, 0.04);
+}
+
+/* ═══════ TARGET ═══════ */
+.target-section { padding: 80px 0; }
+
+.target-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.target-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.target-list li {
+  font-size: 1.1rem;
+  padding: 18px 24px;
+  border-radius: 12px;
+  border-left: 3px solid var(--green);
+  background: linear-gradient(90deg, rgba(126, 212, 166, 0.06), transparent);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.target-list li:hover {
+  border-color: var(--pink);
+  background: linear-gradient(90deg, rgba(248, 164, 200, 0.06), transparent);
+}
+
+.target-check {
+  color: var(--green);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* ═══════ STORY ═══════ */
+.story-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184, 169, 232, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.story-text {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  line-height: 1.9;
+  color: var(--text-dim);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  word-break: keep-all;
+}
+
+.story-text .highlight {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.story-text .accent-line {
+  color: var(--lavender);
+  font-weight: 700;
+  display: block;
+  margin-top: 32px;
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+}
+
+.story-arrow {
+  color: var(--pink);
+  margin-right: 4px;
+}
+
+/* ═══════ WHY SECTION ═══════ */
+.why-section { padding: 80px 0; }
+
+.why-header {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.why-sub {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin-bottom: 48px;
+}
+
+.why-sub .accent { color: var(--lavender); font-weight: 600; }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 580px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+.why-card {
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.why-card:hover { border-color: var(--lavender); transform: translateY(-2px); }
+
+.why-card-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.why-card-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.why-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+/* ═══════ CURRICULUM ═══════ */
+.curriculum-section { padding: 80px 0; }
+
+.curriculum-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.curriculum-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 580px) {
+  .curriculum-cards { grid-template-columns: 1fr; }
+}
+
+.curr-card {
+  padding: 32px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.curr-card:hover { transform: translateY(-4px); }
+.curr-card:nth-child(1):hover { border-color: var(--pink); }
+.curr-card:nth-child(2):hover { border-color: var(--green); }
+.curr-card:nth-child(3):hover { border-color: var(--lavender); }
+.curr-card:nth-child(4):hover { border-color: var(--golden); }
+
+.curr-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+}
+
+.curr-card:nth-child(1)::before { background: linear-gradient(90deg, var(--pink), transparent); }
+.curr-card:nth-child(2)::before { background: linear-gradient(90deg, var(--green), transparent); }
+.curr-card:nth-child(3)::before { background: linear-gradient(90deg, var(--lavender), transparent); }
+.curr-card:nth-child(4)::before { background: linear-gradient(90deg, var(--golden), transparent); }
+
+.curr-part {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.curr-card:nth-child(1) .curr-part { color: var(--pink); }
+.curr-card:nth-child(2) .curr-part { color: var(--green); }
+.curr-card:nth-child(3) .curr-part { color: var(--lavender); }
+.curr-card:nth-child(4) .curr-part { color: var(--golden); }
+
+.curr-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.curr-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.curr-arrow {
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* ═══════ SPEAKERS ═══════ */
+.speakers-section { padding: 80px 0; }
+
+.speakers-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.speaker-card {
+  text-align: center;
+  padding: 28px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  transition: transform 0.3s, border-color 0.3s;
+  text-decoration: none;
+  color: var(--text);
+  display: block;
+  cursor: pointer;
+}
+
+.speaker-card:hover { transform: translateY(-4px); border-color: var(--pink); }
+
+.speaker-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--dark-border), var(--dark));
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 2px solid var(--dark-border);
+  overflow: hidden;
+  position: relative;
+}
+
+.speaker-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-avatar .placeholder-icon {
+  color: var(--text-muted);
+  font-size: 1.6rem;
+}
+
+.speaker-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.speaker-role {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.speaker-parts {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.speaker-part-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--dark-border);
+  color: var(--text-dim);
+}
+
+/* ═══════ TIMETABLE ═══════ */
+.timetable-section { padding: 80px 0; }
+
+.timetable-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.tt-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: var(--dark-card);
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+  align-items: center;
+}
+
+.tt-item:hover { border-color: var(--dark-border); }
+
+@media (max-width: 480px) {
+  .tt-item { grid-template-columns: 80px 1fr; gap: 10px; padding: 12px 14px; }
+}
+
+.tt-time {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tt-content { font-size: 0.95rem; }
+
+.tt-speaker {
+  font-weight: 700;
+  color: var(--pink);
+  margin-right: 6px;
+}
+
+.tt-break {
+  background: transparent;
+  border: 1px dashed var(--dark-border);
+}
+
+.tt-break .tt-content { color: var(--text-muted); font-style: italic; }
+
+.tt-part-label {
+  grid-column: 1 / -1;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 24px 20px 8px;
+}
+
+.tt-part-label.p1 { color: var(--pink); }
+.tt-part-label.p2 { color: var(--green); }
+.tt-part-label.p3 { color: var(--lavender); }
+.tt-part-label.p4 { color: var(--golden); }
+
+/* ═══════ INFO / VENUE ═══════ */
+.info-section { padding: 80px 0; }
+
+.info-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.info-card {
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* ═══════ NETWORKING ═══════ */
+.networking-section { padding: 80px 0; }
+
+.networking-header {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.networking-sub {
+  color: var(--text-dim);
+  margin-bottom: 36px;
+  font-size: 1rem;
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .seat-grid { grid-template-columns: 1fr; }
+}
+
+.seat-card {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.3s;
+}
+
+.seat-card:hover { border-color: var(--green); }
+
+.seat-letter {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.seat-card:nth-child(1) .seat-letter { background: rgba(248, 164, 200, 0.15); color: var(--pink); }
+.seat-card:nth-child(2) .seat-letter { background: rgba(126, 212, 166, 0.15); color: var(--green); }
+.seat-card:nth-child(3) .seat-letter { background: rgba(184, 169, 232, 0.15); color: var(--lavender); }
+.seat-card:nth-child(4) .seat-letter { background: rgba(255, 212, 168, 0.15); color: var(--golden); }
+
+.seat-topic { font-weight: 600; font-size: 0.95rem; }
+
+/* ═══════ CLOSING ═══════ */
+.closing-section {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+}
+
+.closing-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(248, 164, 200, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.closing-text {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  line-height: 2;
+  margin-bottom: 16px;
+  color: var(--text-dim);
+}
+
+.closing-text strong { color: var(--text); }
+
+.closing-punchline {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900;
+  margin: 32px 0 48px;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════ SURVEY ═══════ */
+.survey-section { padding: 80px 0; }
+
+.survey-header {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.survey-sub {
+  color: var(--text-dim);
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.survey-form {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: left;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+
+.form-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.form-label .required {
+  color: var(--pink);
+  margin-left: 4px;
+}
+
+.form-input,
+.form-textarea {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus { border-color: var(--pink); }
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--text-muted); }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-char-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: -4px;
+}
+
+.form-char-count.over { color: #e85555; }
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  user-select: none;
+  font-size: 0.9rem;
+}
+
+.checkbox-item:hover { border-color: var(--text-muted); }
+
+.checkbox-item input[type="checkbox"],
+.checkbox-item input[type="radio"] {
+  accent-color: var(--pink);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.checkbox-item:has(input:checked) {
+  border-color: var(--pink);
+  background: rgba(248, 164, 200, 0.08);
+}
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 40px;
+  border-radius: 60px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--green), #5cc08a);
+  color: var(--black);
+  box-shadow: 0 4px 30px rgba(126, 212, 166, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  align-self: center;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(126, 212, 166, 0.5);
+}
+
+.form-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-submit .spinner {
+  display: none;
+  width: 16px; height: 16px;
+  border: 2px solid transparent;
+  border-top-color: var(--black);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.form-submit.loading .spinner { display: block; }
+.form-submit.loading .btn-text { display: none; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--green);
+  background: rgba(126, 212, 166, 0.06);
+}
+
+.form-success.show { display: block; }
+
+.form-success-icon { font-size: 3rem; margin-bottom: 16px; }
+
+.form-success-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-success-desc { color: var(--text-dim); font-size: 0.95rem; }
+
+.survey-sponsor {
+  margin-top: 40px;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 1px dashed var(--dark-border);
+  background: rgba(255, 212, 168, 0.04);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.survey-sponsor strong { color: var(--golden); }
+
+.survey-sponsor .phone {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ═══════ CTA FINAL ═══════ */
+.cta-section {
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.cta-section .btn-group { justify-content: center; margin-bottom: 24px; }
+
+.hashtags {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.hashtags span {
+  margin: 0 6px;
+}
+
+/* ═══════ FOOTER ═══════ */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--dark-border);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+footer a { color: var(--text-dim); text-decoration: none; }
+footer a:hover { color: var(--pink); }
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+/* ═══════ FLORAL DECORATION ═══════ */
+.floral-border {
+  position: relative;
+  padding: 40px 0;
+}
+
+.floral-border::before,
+.floral-border::after {
+  content: '✿';
+  position: absolute;
+  font-size: 1rem;
+  color: var(--text-muted);
+  opacity: 0.3;
+}
+
+.floral-border::before { top: 0; left: 0; }
+.floral-border::after { bottom: 0; right: 0; }
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 640px) {
+  section { padding: 60px 0; }
+
+  .hero { padding: 100px 0 60px; min-height: auto; }
+
+  .btn { padding: 14px 24px; font-size: 0.9rem; }
+
+  .btn-group { flex-direction: column; align-items: stretch; }
+
+  .pricing-grid { grid-template-columns: 1fr; }
+
+  .speakers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .speakers-grid .speaker-card:first-child { grid-column: 1 / -1; max-width: 200px; margin: 0 auto; }
+
+  .speaker-card { padding: 20px 12px; }
+
+  .speaker-avatar { width: 64px; height: 64px; }
+
+  .curriculum-cards { gap: 12px; }
+
+  .sticky-cta-inner { flex-direction: row; }
+  .sticky-cta .btn { padding: 10px 14px; font-size: 0.8rem; }
+}
+
+@media (max-width: 380px) {
+  .speakers-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ PETALS ═══════ -->
+<div class="petals-container" id="petals" aria-hidden="true"></div>
+
+<!-- ═══════ STICKY CTA ═══════ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <a href="#payment" class="btn btn-primary">자리 확보하기</a>
+    <a href="#survey" class="btn btn-secondary">사전 설문</a>
+  </div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge reveal">
+      <span class="dot"></span>
+      <span id="badgeText">2026 스프링캠프 · 1차 슈퍼 얼리버드 진행 중</span>
+    </div>
+    <div class="hero-event-title reveal reveal-delay-1">2026 Spring Camp</div>
+    <div class="hero-collab reveal reveal-delay-1">여행가J <span class="x-mark">×</span> 더배러</div>
+    <p class="hero-sub reveal reveal-delay-2">지식관리 스프링캠프 &nbsp;|&nbsp; 기록과 활용: 성공적 맥락 설계</p>
+    <h1 class="reveal reveal-delay-2">
+      AI 시대, 살아남는 사람은<br>기록이 아니라 <span class="accent">'맥락'</span>을 설계합니다
+    </h1>
+    <p class="hero-date reveal reveal-delay-3">📅 4월 18일 (토) 10:00 ~ 17:00</p>
+    <div class="btn-group reveal reveal-delay-4">
+      <a href="#payment" class="btn btn-primary">🚀 지금 바로 자리 확보하기</a>
+      <a href="#survey" class="btn btn-secondary">📋 사전 설문 참여하기</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ VALUE ═══════ -->
+<section class="value-section">
+  <div class="container">
+    <h2 class="value-header reveal"><span class="fire">🔥</span> 하루면 됩니다</h2>
+    <ul class="value-list">
+      <li class="reveal reveal-delay-1">
+        <span class="icon">📄</span>
+        <span>내 지식관리 철학 <strong>1페이지</strong> 완성</span>
+      </li>
+      <li class="reveal reveal-delay-2">
+        <span class="icon">🏗️</span>
+        <span>나만의 시스템 구조 <strong>초안 설계</strong></span>
+      </li>
+      <li class="reveal reveal-delay-3">
+        <span class="icon">🤖</span>
+        <span>AI 연결 <strong>워크플로우 구축</strong></span>
+      </li>
+    </ul>
+    <p class="value-quote reveal reveal-delay-4">
+      그냥 배우는 게 아니라<br>"내 방식"이 만들어지는 하루
+    </p>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <h2 class="pricing-header reveal">💸 지금이 가장 싸다</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card featured reveal reveal-delay-1" data-badge="지금이 가장 싸다">
+        <div class="pricing-label">1차 슈퍼 얼리버드</div>
+        <div class="pricing-period">3/24 ~ 4/2</div>
+        <div class="pricing-row">
+          <span class="pricing-type">오프라인</span>
+          <span class="pricing-amount">50,000원</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-type">온라인</span>
+          <span class="pricing-amount">30,000원</span>
+        </div>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2" data-badge="현재 판매 중">
+        <div class="pricing-label">2차 얼리버드</div>
+        <div class="pricing-period">4/3 ~ 4/14</div>
+        <div class="pricing-row">
+          <span class="pricing-type">오프라인</span>
+          <span class="pricing-amount">70,000원</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-type">온라인</span>
+          <span class="pricing-amount">50,000원</span>
+        </div>
+      </div>
+      <div class="pricing-card reveal reveal-delay-3" data-badge="정상가">
+        <div class="pricing-label">정상가</div>
+        <div class="pricing-period">4/15 ~</div>
+        <div class="pricing-row">
+          <span class="pricing-type">오프라인</span>
+          <span class="pricing-amount">200,000원</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-type">온라인</span>
+          <span class="pricing-amount">150,000원</span>
+        </div>
+      </div>
+    </div>
+    <div class="pricing-urgency reveal">
+      ⏳ 지금 놓치면 가격 <strong>4배</strong> 뜁니다
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ TARGET ═══════ -->
+<section class="target-section">
+  <div class="container">
+    <h2 class="target-header reveal">🧠 이런 사람을 위한 워크샵</h2>
+    <ul class="target-list">
+      <li class="reveal reveal-delay-1"><span class="target-check">✔</span> 기록은 하는데 <strong>쌓이기만</strong> 하는 사람</li>
+      <li class="reveal reveal-delay-2"><span class="target-check">✔</span> AI 쓰지만 <strong>방향이 없는</strong> 사람</li>
+      <li class="reveal reveal-delay-3"><span class="target-check">✔</span> 나만의 <strong>시스템을 만들고 싶은</strong> 사람</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ STORY ═══════ -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-text reveal">
+      솔직히 말하면,<br>
+      나도 기록 <span class="highlight">엄청</span> 했어요.
+    </div>
+    <div class="story-text reveal reveal-delay-1" style="margin-top: 32px;">
+      노션, 메모, 앱… 다 써봤는데<br>
+      결국 남는 건 <span class="highlight">"쌓인 정보"</span> 뿐이더라구요.
+    </div>
+    <div class="story-text reveal reveal-delay-2" style="margin-top: 32px;">
+      근데 어느 순간 깨달았습니다.
+    </div>
+    <div class="story-text reveal reveal-delay-3" style="margin-top: 16px;">
+      <span class="accent-line">
+        <span class="story-arrow">👉</span> 문제는 도구가 아니라<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"생각의 구조"였다는 걸
+      </span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ WHY ═══════ -->
+<section class="why-section">
+  <div class="container">
+    <h2 class="why-header reveal">⚡ 왜 이 워크샵인가</h2>
+    <p class="why-sub reveal">
+      우리는 도구를 알려주지 않습니다.<br>
+      대신 <span class="accent">"지성을 설계하는 방법"</span>을 다룹니다
+    </p>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-card-label">관점</div>
+        <div class="why-card-title">왜 기록하는가</div>
+        <div class="why-card-desc">판단 기준을 세우는 것부터</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-card-label">선택</div>
+        <div class="why-card-title">무엇을 남길 것인가</div>
+        <div class="why-card-desc">정보가 아니라 방향을 축적</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-card-label">시스템</div>
+        <div class="why-card-title">어떻게 구조화할 것인가</div>
+        <div class="why-card-desc">도구가 아니라 사고의 틀</div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-card-label">AI</div>
+        <div class="why-card-title">어디까지 확장할 것인가</div>
+        <div class="why-card-desc">인간과 AI의 경계를 설계</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ CURRICULUM ═══════ -->
+<section class="curriculum-section">
+  <div class="container">
+    <h2 class="curriculum-header reveal">🚀 핵심 커리큘럼</h2>
+    <div class="curriculum-cards">
+      <div class="curr-card reveal reveal-delay-1">
+        <div class="curr-part">PART 1 · 관점</div>
+        <div class="curr-title">AI 시대, 중요한 건<br>정보가 아니라</div>
+        <div class="curr-desc"><span class="curr-arrow">👉</span> <strong>판단 기준</strong></div>
+      </div>
+      <div class="curr-card reveal reveal-delay-2">
+        <div class="curr-part">PART 2 · 감각</div>
+        <div class="curr-title">텍스트만 기록?<br>이제는</div>
+        <div class="curr-desc"><span class="curr-arrow">👉</span> <strong>영상, 음악, 경험까지</strong> 감각을 설계하는 시대</div>
+      </div>
+      <div class="curr-card reveal reveal-delay-3">
+        <div class="curr-part">PART 3 · 시스템</div>
+        <div class="curr-title">NotebookLM vs Obsidian</div>
+        <div class="curr-desc"><span class="curr-arrow">👉</span> <strong>내 스타일</strong> 맞는 구조 찾기</div>
+      </div>
+      <div class="curr-card reveal reveal-delay-4">
+        <div class="curr-part">PART 4 · 확장</div>
+        <div class="curr-title">AI Agent + Claude Code</div>
+        <div class="curr-desc"><span class="curr-arrow">👉</span> <strong>자동화 = 생산성 폭발</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ SPEAKERS ═══════ -->
+<section class="speakers-section">
+  <div class="container">
+    <h2 class="speakers-header reveal">👥 연사 소개</h2>
+    <div class="speakers-grid">
+      <a href="#" class="speaker-card reveal reveal-delay-1" data-profile="여행가J 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="j.jpg" alt="여행가J"> -->
+          <span class="placeholder-icon">🎤</span>
+        </div>
+        <div class="speaker-name">여행가J</div>
+        <div class="speaker-role">AI 활용 교육 전문가 · 브랜딩 컨설턴트</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag" style="border-color:var(--golden);color:var(--golden)">MC</span>
+        </div>
+      </a>
+      <a href="#" class="speaker-card reveal reveal-delay-1" data-profile="타래 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="tarae.jpg" alt="타래"> -->
+          <span class="placeholder-icon">✍️</span>
+        </div>
+        <div class="speaker-name">타래</div>
+        <div class="speaker-role">26년간 기록을 멈추지 않은 사람</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag">Part 1</span>
+          <span class="speaker-part-tag">Part 4</span>
+        </div>
+      </a>
+      <a href="#" class="speaker-card reveal reveal-delay-2" data-profile="무니 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="mooni.jpg" alt="무니"> -->
+          <span class="placeholder-icon">💻</span>
+        </div>
+        <div class="speaker-name">무니</div>
+        <div class="speaker-role">코드처럼 지식을 설계하는 AI 개발자</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag">Part 1</span>
+          <span class="speaker-part-tag">Part 3</span>
+        </div>
+      </a>
+      <a href="#" class="speaker-card reveal reveal-delay-3" data-profile="민트베어 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="mintbear.jpg" alt="민트베어"> -->
+          <span class="placeholder-icon">🎬</span>
+        </div>
+        <div class="speaker-name">민트베어</div>
+        <div class="speaker-role">감각의 기록을 서사로 설계하는 아키텍트</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag">Part 2</span>
+        </div>
+      </a>
+      <a href="#" class="speaker-card reveal reveal-delay-4" data-profile="구요한 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="yohan.jpg" alt="구요한"> -->
+          <span class="placeholder-icon">🎷</span>
+        </div>
+        <div class="speaker-name">구요한</div>
+        <div class="speaker-role">재즈 아티스트의 감정 기록</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag">Part 2</span>
+        </div>
+      </a>
+      <a href="#" class="speaker-card reveal reveal-delay-4" data-profile="박준 프로필 링크">
+        <div class="speaker-avatar">
+          <!-- 프로필 이미지: <img src="joon.jpg" alt="박준"> -->
+          <span class="placeholder-icon">🧠</span>
+        </div>
+        <div class="speaker-name">박준</div>
+        <div class="speaker-role">맥락을 설계하는 사람이 AI를 지배한다</div>
+        <div class="speaker-parts">
+          <span class="speaker-part-tag">Part 4</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ TIMETABLE ═══════ -->
+<section class="timetable-section">
+  <div class="container">
+    <h2 class="timetable-header reveal">📋 타임테이블</h2>
+    <div class="timetable">
+      <div class="tt-part-label reveal">OPENING</div>
+      <div class="tt-item reveal">
+        <span class="tt-time">10:00–10:30</span>
+        <span class="tt-content">오프닝 · 조별 좌석 배치 (관심주제별)</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">10:30–10:55</span>
+        <span class="tt-content">워크시트 초안 작성</span>
+      </div>
+
+      <div class="tt-part-label p1 reveal">PART 1 — 관점</div>
+      <div class="tt-item reveal">
+        <span class="tt-time">11:00–11:20</span>
+        <span class="tt-content"><span class="tt-speaker">타래</span>AI 시대, 지식관리는 기술이 아니라 관점이다</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">11:20–11:40</span>
+        <span class="tt-content"><span class="tt-speaker">무니</span>Me.learn() — AI 개발자의 지식관리</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">11:40–12:00</span>
+        <span class="tt-content">워크시트 재작성 · 바뀐 관점 확인하기</span>
+      </div>
+
+      <div class="tt-item tt-break reveal">
+        <span class="tt-time">12:00–13:00</span>
+        <span class="tt-content">🍱 점심식사 · 네트워킹</span>
+      </div>
+
+      <div class="tt-part-label p2 reveal">PART 2 — 감각</div>
+      <div class="tt-item reveal">
+        <span class="tt-time">13:00–13:30</span>
+        <span class="tt-content"><span class="tt-speaker">민트베어</span>기록에서 설계로 : 서사의 중력을 만드는 아키텍트</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">13:30–14:00</span>
+        <span class="tt-content"><span class="tt-speaker">구요한</span>아티스트의 감정 기록</span>
+      </div>
+
+      <div class="tt-item tt-break reveal">
+        <span class="tt-time">14:00–14:15</span>
+        <span class="tt-content">☕ 휴게시간</span>
+      </div>
+
+      <div class="tt-part-label p3 reveal">PART 3 — 시스템</div>
+      <div class="tt-item reveal">
+        <span class="tt-time">14:15–14:45</span>
+        <span class="tt-content"><span class="tt-speaker">무니</span>에겐남 vs 테토녀 지식관리 대결</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">14:45–15:15</span>
+        <span class="tt-content"><span class="tt-speaker">브라이언</span>지식관리 시스템 실전</span>
+      </div>
+
+      <div class="tt-item tt-break reveal">
+        <span class="tt-time">15:15–15:30</span>
+        <span class="tt-content">☕ 휴게시간</span>
+      </div>
+
+      <div class="tt-part-label p4 reveal">PART 4 — 확장</div>
+      <div class="tt-item reveal">
+        <span class="tt-time">15:30–16:00</span>
+        <span class="tt-content"><span class="tt-speaker">타래</span>또 하나의 가족 — 고양이 에이전트</span>
+      </div>
+      <div class="tt-item reveal">
+        <span class="tt-time">16:00–17:00</span>
+        <span class="tt-content"><span class="tt-speaker">박준</span>Claude Code 라이브 — CLAUDE.md에서 에이전트 팀까지</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ INFO ═══════ -->
+<section class="info-section">
+  <div class="container">
+    <h2 class="info-header reveal">🍱 운영 안내</h2>
+    <div class="info-grid">
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-icon">📅</div>
+        <div class="info-label">날짜</div>
+        <div class="info-value">4월 18일 (토)</div>
+      </div>
+      <div class="info-card reveal reveal-delay-2">
+        <div class="info-icon">⏰</div>
+        <div class="info-label">시간</div>
+        <div class="info-value">오전 10시 ~ 오후 5시</div>
+      </div>
+      <div class="info-card reveal reveal-delay-3">
+        <div class="info-icon">📍</div>
+        <div class="info-label">장소</div>
+        <div class="info-value"><a href="https://www.seoulaihub.kr/index.asp" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">서울AI허브</a></div>
+        <div style="font-size:0.82rem;color:var(--text-dim);margin-top:4px;">서울시 서초구 태봉로 108</div>
+      </div>
+      <div class="info-card reveal reveal-delay-4">
+        <div class="info-icon">🍱</div>
+        <div class="info-label">점심</div>
+        <div class="info-value">도시락 제공</div>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-icon">🕘</div>
+        <div class="info-label">입장</div>
+        <div class="info-value">9시 50분까지 도착 권장</div>
+      </div>
+      <div class="info-card reveal reveal-delay-2">
+        <div class="info-icon">🚗</div>
+        <div class="info-label">주차</div>
+        <div class="info-value">인근 주차장 / 대중교통 이용</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ NETWORKING ═══════ -->
+<section class="networking-section">
+  <div class="container">
+    <h2 class="networking-header reveal">🤝 네트워킹도 설계했습니다</h2>
+    <p class="networking-sub reveal">그냥 만나는 게 아니라, <strong>같이 성장하는 구조</strong></p>
+    <div class="seat-grid">
+      <div class="seat-card reveal reveal-delay-1">
+        <div class="seat-letter">A</div>
+        <div class="seat-topic">철학 / PKM</div>
+      </div>
+      <div class="seat-card reveal reveal-delay-2">
+        <div class="seat-letter">B</div>
+        <div class="seat-topic">영상 / 음악</div>
+      </div>
+      <div class="seat-card reveal reveal-delay-3">
+        <div class="seat-letter">C</div>
+        <div class="seat-topic">노트 시스템</div>
+      </div>
+      <div class="seat-card reveal reveal-delay-4">
+        <div class="seat-letter">D</div>
+        <div class="seat-topic">AI Agent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ CLOSING ═══════ -->
+<section class="closing-section">
+  <div class="container">
+    <div class="closing-text reveal">
+      AI는 <strong>답</strong>을 만듭니다<br>
+      하지만 <strong>방향</strong>은 못 만듭니다
+    </div>
+    <div class="closing-punchline reveal reveal-delay-1">
+      👉 그건 당신의 몫입니다
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SURVEY ═══════ -->
+<section class="survey-section" id="survey">
+  <div class="container">
+    <h2 class="survey-header reveal">📋 사전 설문</h2>
+    <p class="survey-sub reveal">워크샵 준비에 큰 도움이 됩니다. 잠깐만 시간 내어 답변해주세요!</p>
+
+    <form class="survey-form reveal" id="surveyForm" novalidate>
+      <div class="form-group">
+        <label class="form-label">이름 <span class="required">*</span></label>
+        <input type="text" class="form-input" name="name" placeholder="홍길동" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">이메일 <span class="required">*</span></label>
+        <input type="email" class="form-input" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">전화번호 <span class="required">*</span></label>
+        <input type="tel" class="form-input" name="phone" placeholder="010-0000-0000" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">참여 형태 <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="radio" name="attendance" value="오프라인" required>
+            <span>오프라인</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="radio" name="attendance" value="온라인">
+            <span>온라인</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">관심 분야 <span class="required">*</span> <span style="font-weight:400;color:var(--text-muted);font-size:0.8rem">(복수 선택 가능)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="interest" value="A: 철학 / PKM">
+            <span>A : 철학 / PKM</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="interest" value="B: 영상 / 음악">
+            <span>B : 영상 / 음악</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="interest" value="C: 노트 시스템">
+            <span>C : 노트 시스템</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="interest" value="D: AI Agent">
+            <span>D : AI Agent</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">도시락 취향 <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="radio" name="lunch" value="고기파" required>
+            <span>🥩 고기파</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="radio" name="lunch" value="채소파">
+            <span>🥗 채소파</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">기타 하고 싶은 이야기</label>
+        <textarea class="form-textarea" name="message" placeholder="궁금한 점, 기대하는 내용, 연사에게 질문 등 자유롭게 적어주세요" maxlength="300" id="messageArea"></textarea>
+        <div class="form-char-count"><span id="charCount">0</span> / 300자</div>
+      </div>
+
+      <div class="survey-sponsor" style="margin-top:24px;margin-bottom:24px;">
+        🤝 <strong>후원 대환영!</strong><br>
+        후원을 해주실 분들은 <strong>여행가J</strong> <span class="phone">010-8836-7094</span> 로 연락해주세요.
+      </div>
+
+      <button type="submit" class="form-submit" id="submitBtn">
+        <span class="btn-text">✉️ 설문 제출하기</span>
+        <span class="spinner"></span>
+      </button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">🌸</div>
+      <div class="form-success-title">설문이 제출되었습니다!</div>
+      <div class="form-success-desc">소중한 답변 감사합니다. 스프링캠프에서 만나요!</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-floral" aria-hidden="true">❀ ❀ ❀</div>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="btn-group reveal">
+      <a href="#payment" class="btn btn-primary">🚀 지금 바로 자리 확보하기</a>
+      <a href="#" class="btn btn-secondary" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">🏠 Home</a>
+    </div>
+    <div class="hashtags reveal reveal-delay-1">
+      <span>#지식관리</span>
+      <span>#AI워크샵</span>
+      <span>#자기계발</span>
+      <span>#생산성</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="#">주최: [추후 안내]</a>
+      <a href="#">문의: [추후 안내]</a>
+    </div>
+    <p>© 2026 지식관리 스프링캠프. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ═══════ DATE-BASED BADGE & PRICING ═══════
+(function initDateBadge() {
+  const now = new Date();
+  const badge = document.getElementById('badgeText');
+  const cards = document.querySelectorAll('.pricing-card');
+  // 날짜 기준: 1차 ~4/2, 2차 4/3~4/14, 정상가 4/15~
+  const phase1End = new Date('2026-04-02T23:59:59+09:00');
+  const phase2End = new Date('2026-04-14T23:59:59+09:00');
+
+  if (now <= phase1End) {
+    badge.textContent = '2026 스프링캠프 · 1차 슈퍼 얼리버드 진행 중';
+    cards[0].classList.add('featured');
+    cards[1].classList.remove('featured');
+    cards[2].classList.remove('featured');
+  } else if (now <= phase2End) {
+    badge.textContent = '2026 스프링캠프 · 2차 얼리버드 진행 중';
+    cards[0].classList.remove('featured');
+    cards[1].classList.add('featured');
+    cards[2].classList.remove('featured');
+  } else {
+    badge.textContent = '2026 스프링캠프 · 참가 신청 진행 중';
+    cards[0].classList.remove('featured');
+    cards[1].classList.remove('featured');
+    cards[2].classList.add('featured');
+  }
+})();
+
+// ═══════ PETALS ═══════
+(function createPetals() {
+  const container = document.getElementById('petals');
+  const count = 14;
+  for (let i = 0; i < count; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.style.left = Math.random() * 100 + '%';
+    petal.style.animationDuration = (8 + Math.random() * 12) + 's';
+    petal.style.animationDelay = (Math.random() * 15) + 's';
+    container.appendChild(petal);
+  }
+})();
+
+// ═══════ REVEAL ON SCROLL ═══════
+(function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+// ═══════ STICKY CTA ═══════
+(function initStickyCta() {
+  const bar = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  let ticking = false;
+
+  function update() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const footerTop = document.querySelector('footer').getBoundingClientRect().top;
+    const windowH = window.innerHeight;
+
+    if (heroBottom < 0 && footerTop > windowH) {
+      bar.classList.add('show');
+    } else {
+      bar.classList.remove('show');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// ═══════ SURVEY: CHAR COUNT ═══════
+(function initCharCount() {
+  const area = document.getElementById('messageArea');
+  const counter = document.getElementById('charCount');
+  if (!area || !counter) return;
+  area.addEventListener('input', () => {
+    const len = area.value.length;
+    counter.textContent = len;
+    counter.parentElement.classList.toggle('over', len > 300);
+  });
+})();
+
+// ═══════ SURVEY: GOOGLE SHEETS ═══════
+(function initSurvey() {
+  const form = document.getElementById('surveyForm');
+  const btn = document.getElementById('submitBtn');
+  const success = document.getElementById('formSuccess');
+  if (!form) return;
+
+  // Google Apps Script Web App URL — 아래 단계에서 배포 후 교체
+  const SCRIPT_URL = '__GOOGLE_APPS_SCRIPT_URL__';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // 유효성 검사
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    const attendance = form.querySelector('[name="attendance"]:checked');
+    const interests = [...form.querySelectorAll('[name="interest"]:checked')].map(c => c.value);
+    const lunch = form.querySelector('[name="lunch"]:checked');
+    const message = form.querySelector('[name="message"]').value.trim();
+
+    if (!name || !email || !phone) {
+      alert('이름, 이메일, 전화번호를 입력해주세요.');
+      return;
+    }
+    if (!attendance) {
+      alert('참여 형태를 선택해주세요.');
+      return;
+    }
+    if (interests.length === 0) {
+      alert('관심 분야를 1개 이상 선택해주세요.');
+      return;
+    }
+    if (!lunch) {
+      alert('도시락 취향을 선택해주세요.');
+      return;
+    }
+    if (message.length > 300) {
+      alert('기타 이야기는 300자 이내로 작성해주세요.');
+      return;
+    }
+
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    const data = {
+      name,
+      email,
+      phone,
+      attendance: attendance.value,
+      interest: interests.join(', '),
+      lunch: lunch.value,
+      message,
+      timestamp: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      form.style.display = 'none';
+      success.classList.add('show');
+    } catch (err) {
+      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
