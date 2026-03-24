@@ -204,24 +204,31 @@ section {
 .top-banner {
   position: relative;
   z-index: 1;
-  padding: 18px 0;
+  padding: 32px 0 24px;
   border-bottom: 1px solid var(--dark-border);
   background: rgba(17, 17, 17, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
+.top-banner-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .top-banner-logo {
-  height: 144px;
-  width: auto;
+  width: 200px;
+  height: auto;
   object-fit: contain;
 }
 
 .top-banner-text {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-dim);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 /* ═══════ HERO ═══════ */
@@ -1332,9 +1339,11 @@ footer a:hover { color: var(--pink); }
 
 <!-- ═══════ TOP BANNER ═══════ -->
 <div class="top-banner">
-  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-    <img src="seoul-ai-hub-logo.png" alt="서울AI허브 로고" class="top-banner-logo">
-    <span class="top-banner-text">서울AI허브와 함께하는</span>
+  <div class="container">
+    <div class="top-banner-inner">
+      <img src="seoul-ai-hub-logo.png" alt="서울AI허브 로고" class="top-banner-logo">
+      <span class="top-banner-text">서울AI허브와 함께하는</span>
+    </div>
   </div>
 </div>
 
