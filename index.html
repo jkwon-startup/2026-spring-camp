@@ -200,6 +200,30 @@ section {
   flex-wrap: wrap;
 }
 
+/* ═══════ TOP BANNER ═══════ */
+.top-banner {
+  position: relative;
+  z-index: 1;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--dark-border);
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.top-banner-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.top-banner-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
 /* ═══════ HERO ═══════ */
 .hero {
   min-height: 100vh;
@@ -1303,6 +1327,14 @@ footer a:hover { color: var(--pink); }
   <div class="sticky-cta-inner">
     <a href="#payment" class="btn btn-primary">자리 확보하기</a>
     <a href="#survey" class="btn btn-secondary">사전 설문</a>
+  </div>
+</div>
+
+<!-- ═══════ TOP BANNER ═══════ -->
+<div class="top-banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <img src="seoul-ai-hub-logo.png" alt="서울AI허브 로고" class="top-banner-logo">
+    <span class="top-banner-text">서울AI허브와 함께하는</span>
   </div>
 </div>
 
