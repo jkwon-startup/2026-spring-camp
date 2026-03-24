@@ -361,6 +361,42 @@ section {
 
 .hero .btn-group { justify-content: center; }
 
+/* ═══════ VENUE PHOTO ═══════ */
+.venue-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.venue-photo img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+  transition: filter 0.4s;
+}
+
+.venue-photo:hover img { filter: brightness(0.85); }
+
+.venue-photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(transparent, rgba(10,10,10,0.85));
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .venue-photo img { height: 180px; }
+}
+
 /* ═══════ SECTION DIVIDER ═══════ */
 .divider {
   width: 100%;
@@ -1373,7 +1409,10 @@ footer a:hover { color: var(--pink); }
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="venue-photo reveal">
+  <img src="photos/venue-1.jpeg" alt="서울AI허브 강의 현장">
+  <div class="venue-photo-overlay">서울AI허브 실제 강의 현장</div>
+</div>
 
 <!-- ═══════ VALUE ═══════ -->
 <section class="value-section">
@@ -1554,7 +1593,10 @@ footer a:hover { color: var(--pink); }
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="venue-photo reveal">
+  <img src="photos/venue-2.jpeg" alt="서울AI허브 워크샵 풍경">
+  <div class="venue-photo-overlay">함께 배우고 함께 성장하는 현장</div>
+</div>
 
 <!-- ═══════ SPEAKERS ═══════ -->
 <section class="speakers-section">
@@ -1754,6 +1796,16 @@ footer a:hover { color: var(--pink); }
         <div class="info-label">주차</div>
         <div class="info-value">인근 주차장 / 대중교통 이용</div>
       </div>
+      <div class="info-card reveal reveal-delay-3">
+        <div class="info-icon">🖥️</div>
+        <div class="info-label">참여 형태</div>
+        <div class="info-value">오프라인 + 온라인 동시 진행</div>
+      </div>
+      <div class="info-card reveal reveal-delay-4">
+        <div class="info-icon">🔄</div>
+        <div class="info-label">다시보기</div>
+        <div class="info-value">녹화 영상 다시보기 제공</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1786,7 +1838,10 @@ footer a:hover { color: var(--pink); }
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="venue-photo reveal">
+  <img src="photos/venue-4.jpeg" alt="서울AI허브 참가자들">
+  <div class="venue-photo-overlay">당신도 이 자리에 함께하세요</div>
+</div>
 
 <!-- ═══════ CLOSING ═══════ -->
 <section class="closing-section">
