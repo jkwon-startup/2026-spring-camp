@@ -808,10 +808,20 @@ section {
 }
 
 .curr-desc {
-  font-size: 0.9rem;
-  color: var(--text-dim);
+  font-size: 1.05rem;
+  color: var(--text);
   line-height: 1.6;
+  font-weight: 600;
+  margin-top: 4px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
 }
+
+.curr-card:nth-child(1) .curr-desc strong { color: var(--pink); }
+.curr-card:nth-child(2) .curr-desc strong { color: var(--green); }
+.curr-card:nth-child(3) .curr-desc strong { color: var(--lavender); }
+.curr-card:nth-child(4) .curr-desc strong { color: var(--golden); }
 
 .curr-arrow {
   display: inline-block;
