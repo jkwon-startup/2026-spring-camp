@@ -397,6 +397,30 @@ section {
   .venue-photo img { height: 180px; }
 }
 
+.venue-info-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 20px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.venue-info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
 /* ═══════ SECTION DIVIDER ═══════ */
 .divider {
   width: 100%;
@@ -1411,7 +1435,11 @@ footer a:hover { color: var(--pink); }
 
 <div class="venue-photo">
   <img src="photos/venue-1.jpeg" alt="서울AI허브 강의 현장">
-  <div class="venue-photo-overlay">서울AI허브 실제 강의 현장<br><span style="font-size:0.75rem;">🖥️ 오프라인 + 온라인 동시 진행 &nbsp;|&nbsp; 🔄 다시보기 제공</span></div>
+  <div class="venue-photo-overlay">서울AI허브 실제 강의 현장</div>
+</div>
+<div class="venue-info-bar">
+  <span class="venue-info-chip">🖥️ 오프라인 + 온라인 동시 진행</span>
+  <span class="venue-info-chip">🔄 녹화 영상 다시보기 제공</span>
 </div>
 
 <!-- ═══════ VALUE ═══════ -->
@@ -1595,7 +1623,11 @@ footer a:hover { color: var(--pink); }
 
 <div class="venue-photo">
   <img src="photos/venue-2.jpeg" alt="서울AI허브 워크샵 풍경">
-  <div class="venue-photo-overlay">함께 배우고 함께 성장하는 현장<br><span style="font-size:0.75rem;">🖥️ 오프라인 + 온라인 동시 진행 &nbsp;|&nbsp; 🔄 다시보기 제공</span></div>
+  <div class="venue-photo-overlay">함께 배우고 함께 성장하는 현장</div>
+</div>
+<div class="venue-info-bar">
+  <span class="venue-info-chip">🖥️ 오프라인 + 온라인 동시 진행</span>
+  <span class="venue-info-chip">🔄 녹화 영상 다시보기 제공</span>
 </div>
 
 <!-- ═══════ SPEAKERS ═══════ -->
@@ -1840,7 +1872,11 @@ footer a:hover { color: var(--pink); }
 
 <div class="venue-photo">
   <img src="photos/venue-4.jpeg" alt="서울AI허브 참가자들">
-  <div class="venue-photo-overlay">당신도 이 자리에 함께하세요<br><span style="font-size:0.75rem;">🖥️ 오프라인 + 온라인 동시 진행 &nbsp;|&nbsp; 🔄 다시보기 제공</span></div>
+  <div class="venue-photo-overlay">당신도 이 자리에 함께하세요</div>
+</div>
+<div class="venue-info-bar">
+  <span class="venue-info-chip">🖥️ 오프라인 + 온라인 동시 진행</span>
+  <span class="venue-info-chip">🔄 녹화 영상 다시보기 제공</span>
 </div>
 
 <!-- ═══════ CLOSING ═══════ -->
