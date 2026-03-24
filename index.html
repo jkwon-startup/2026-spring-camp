@@ -1947,22 +1947,22 @@ footer a:hover { color: var(--pink); }
       </div>
 
       <div class="form-group">
-        <label class="form-label">관심 분야 <span class="required">*</span> <span style="font-weight:400;color:var(--text-muted);font-size:0.8rem">(복수 선택 가능)</span></label>
+        <label class="form-label">관심 분야 <span class="required">*</span> <span style="font-weight:400;color:var(--text-muted);font-size:0.8rem">(1개 선택)</span></label>
         <div class="checkbox-group">
           <label class="checkbox-item">
-            <input type="checkbox" name="interest" value="A: 철학 / PKM">
+            <input type="radio" name="interest" value="A: 철학 / PKM">
             <span>A : 철학 / PKM</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" name="interest" value="B: 콘텐츠">
+            <input type="radio" name="interest" value="B: 콘텐츠">
             <span>B : 콘텐츠</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" name="interest" value="C: 노트 시스템">
+            <input type="radio" name="interest" value="C: 노트 시스템">
             <span>C : 노트 시스템</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" name="interest" value="D: AI Agent">
+            <input type="radio" name="interest" value="D: AI Agent">
             <span>D : AI Agent</span>
           </label>
         </div>
@@ -2153,7 +2153,8 @@ footer a:hover { color: var(--pink); }
     const email = form.querySelector('[name="email"]').value.trim();
     const phone = form.querySelector('[name="phone"]').value.trim();
     const attendance = form.querySelector('[name="attendance"]:checked');
-    const interests = [...form.querySelectorAll('[name="interest"]:checked')].map(c => c.value);
+    const interestEl = form.querySelector('[name="interest"]:checked');
+    const interests = interestEl ? [interestEl.value] : [];
     const lunch = form.querySelector('[name="lunch"]:checked');
     const message = form.querySelector('[name="message"]').value.trim();
 
